@@ -1,0 +1,2 @@
+this run: segs=100 pi_part=346065536839 fail=none rows/pos=199.21 cells/pos=58.15 refblocks=614 arows=565549805 brows=6543810261 bruns=61184973488 bgroups=264252334477 time=1135.952s
+ALLDONE X=10000000000000 K=1535 B=8192 W=100000000000 T=128 sc=0 src=52c92c9f479a| segs=100/100 pi=346065536839 G=635 conflicts=0 fail_lines=0 OK

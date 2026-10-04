@@ -1,0 +1,100 @@
+== build warnings: 0 lines; src=52c92c9f479a
+== G table: brute | T=0 (runs never split) | T=64 | T=4 + SELFCHECK, small blocks (expect Odlyzko: 5 15 35 65 95 135 175 248)
+X=100 pi=25 G=5 | X=100 pi=25 G=5 OK | X=100 pi=25 G=5 OK | X=100 pi=25 G=5 OK
+X=1000 pi=168 G=15 | X=1000 pi=168 G=15 OK | X=1000 pi=168 G=15 OK | X=1000 pi=168 G=15 OK
+X=10000 pi=1229 G=35 | X=10000 pi=1229 G=35 OK | X=10000 pi=1229 G=35 OK | X=10000 pi=1229 G=35 OK
+X=100000 pi=9592 G=65 | X=100000 pi=9592 G=65 OK | X=100000 pi=9592 G=65 OK | X=100000 pi=9592 G=65 OK
+X=1000000 pi=78498 G=95 | X=1000000 pi=78498 G=95 OK | X=1000000 pi=78498 G=95 OK | X=1000000 pi=78498 G=95 OK
+X=10000000 pi=664579 G=135 | X=10000000 pi=664579 G=135 OK | X=10000000 pi=664579 G=135 OK | X=10000000 pi=664579 G=135 OK
+X=100000000 pi=5761455 G=175 | X=100000000 pi=5761455 G=175 OK | X=100000000 pi=5761455 G=175 OK | X=100000000 pi=5761455 G=175 OK
+(skip) | X=1000000000 pi=50847534 G=248 OK | X=1000000000 pi=50847534 G=248 OK | X=1000000000 pi=50847534 G=248 OK
+== 1e10, 1e11 (expect G=329, 417; pi=455052511, 4118054813)
+X=10000000000 pi=455052511 G=329 OK
+this run: segs=100 pi_part=4118054813 fail=none rows/pos=160.92 cells/pos=44.52 refblocks=1 arows=13124806 brows=117035303 bruns=1110792372 bgroups=2496064065 time=12.929s
+X=100000000000 pi=4118054813 G=417 OK
+== SELFCHECK on [1e15, 1e15+2e9) (expect fail=none)
+this run: segs=20 pi_part=57901748 fail=none rows/pos=219.06 cells/pos=57.54 refblocks=5 arows=215439 brows=2293606 bruns=20964498 bgroups=47172549 time=2.040s
+BENCH run: NOT a verification
+rc=4 (expect 4: bench run)
+== checkpoint
+ALLDONE X=10000000000 K=1024 B=4096 W=1000000000 T=64 sc=0 src=52c92c9f479a| segs=10/10 pi=455052511 G=329 conflicts=0 fail_lines=0 OK
+rc=0 DONE=10 (expect 0, 10)
+rerun rc=0 DONE=10 (expect 0, 10)
+ALLDONE X=20000000000 K=1024 B=4096 W=1000000000 T=64 sc=0 src=52c92c9f479a| segs=20/20 pi=882206716 G=333 conflicts=0 fail_lines=0 OK
+extend rc=0 DONE=20 (expect 0, 20)
+x=1e9 pi=50847534 G=248
+x=5e9 pi=234954223 G=329
+x=1e10 pi=455052511 G=329
+x=2e10 pi=882206716 G=333
+x=3e10: 10 segments missing (first 20)
+records checked: 7, mismatches: 0
+milestones rc=1 (expect 1: 3e10 missing)
+-- cut a DONE line in the middle of clean= (at a 16-digit boundary): recomputed, not used
+ALLDONE X=20000000000 K=1024 B=4096 W=1000000000 T=64 sc=0 src=52c92c9f479a| segs=20/20 pi=882206716 G=333 conflicts=0 fail_lines=0 OK
+rc=0 DONE 13 lines=2 (expect 0, 2)
+x=2e10 pi=882206716 G=333
+records checked: 7, mismatches: 0
+rc=0 (expect 0, G=333)
+-- conflicting duplicate line (one hex digit changed): ALLFAIL CONFLICT, rc 7; milestones refuses
+rc=7 ALLFAIL X=20000000000 K=1024 B (expect 7, ALLFAIL ... CONFLICT)
+conflicting DONE lines for segments [5]
+rc=1 (expect nonzero)
+-- lock: a second run on the same log must refuse (rc 8)
+another run holds tlogs/ck.log.lk.lock
+rc=8 (expect 8)
+-- K too small (K=50 at 1e6): FAIL line reason=K_too_small, rc 5
+rc=5 FAILED (K_too_small) reason=     10 reason=K_too_small 
+-- RECHECK segments 3,7,19 into a separate log and compare with the main log
+rc=4 (expect 4)
+seg 3 SAME
+seg 7 SAME
+seg 19 SAME
+== SELFCHECK at production parameters (K=1535 B=8192 T=128) on [1e15, 1e15+2e9) and small X (expect fail=none / Odlyzko G)
+this run: segs=20 pi_part=57901748 fail=none rows/pos=232.91 cells/pos=66.15 refblocks=5 arows=102300 brows=1291783 bruns=11970566 bgroups=51166003 time=2.213s
+X=1000000 pi=78498 G=95 OK
+X=100000000 pi=5761455 G=175 OK
+X=10000000000 pi=455052511 G=329 OK
+== SELFCHECK at production parameters near 1e16 (K=1535 B=8192 T=128), [1e16-2e9, 1e16) (expect fail=none, refblocks>0 likely)
+this run: segs=20 pi_part=54284430 fail=none rows/pos=248.19 cells/pos=69.29 refblocks=10 arows=98233 brows=1296010 bruns=11891463 bgroups=50614943 time=6.748s
+== SEG_LO/SEG_HI split into two logs, then merge (expect: each INCOMPLETE rc 7, merged ALLDONE rc 0, G=333)
+part1 rc=7 ALLFAIL X=20 (expect 7 ALLFAIL)
+part2 rc=7 ALLFAIL X=20 (expect 7 ALLFAIL)
+merged rc=0 ALLDONE X=20000000000 K=1024 B=4096 W=1000000000 T=64 sc=0 src=52c92c9f479a| segs=20/20 pi=882206716 G=333 conflicts=0 fail_lines=0 OK (expect 0)
+== SIGTERM: finish in-progress segments and exit 9; rerun completes (expect rc 9 then rc 0)
+rc=9 DONE=31 (expect 9, fewer than 100)
+ALLDONE X=100000000000 K=1024 B=4096 W=1000000000 T=64 sc=0 src=52c92c9f479a| segs=100/100 pi=4118054813 G=417 conflicts=0 fail_lines=0 OK
+rc=0 (expect 0)
+== SIEVE_ONLY with BENCH_LO=0 must not look like a verification (expect rc 4)
+rc=4
+== segment start on a prime (W=3, W=5), K boundary (K=5 ok, K=4 rc 5), tiny B with word boundaries (SELFCHECK T=1)
+X=30 pi=10 G=3 OK
+X=100 pi=25 G=5 OK
+K=5 rc=0 X=100 pi=25 G=5 OK (expect 0, G=5)
+K=4 rc=5 FAILED (K_too_small) (expect 5)
+B=1: X=1000000 pi=78498 G=95 OK
+B=2: X=1000000 pi=78498 G=95 OK
+B=63: X=1000000 pi=78498 G=95 OK
+B=64: X=1000000 pi=78498 G=95 OK
+B=65: X=1000000 pi=78498 G=95 OK
+== RECHECK exit code (expect 4)
+rc=4
+== record prime gaps (OEIS A002386/A005250) up to 1e12 with production parameters (expect 21 records checked, 0 mismatches; G=481)
+ALLDONE X=1000000000000 K=1535 B=8192 W=10000000000 T=128 sc=0 src=52c92c9f479a| segs=100/100 pi=37607912018 G=481 conflicts=0 fail_lines=0 OK
+x=1e11 pi=4118054813 G=417
+x=1e12 pi=37607912018 G=481
+records checked: 21, mismatches: 0
+rc=0
+-- negative: change the record segment 73 (540@738832927927) to 538, and segment 99 (no record) to 1200 (expect RECORD MISMATCH rc 2, RECORD MISSING rc 2)
+RECORD MISMATCH: segment 73 maxgap=538@738832927927, expected 540@738832927927
+records checked: 21, mismatches: 1
+rc=2
+RECORD MISSING: segment 99 maxgap=1200@993878218139 exceeds the current record 540
+records checked: 21, mismatches: 1
+rc=2
+== bad arguments (expect rc 1)
+W=2 rc=1
+K=4096 rc=1
+X%W rc=1
+BENCH_LO+log rc=1
+SEG_LO/SEG_HI without log rc=1
+== done

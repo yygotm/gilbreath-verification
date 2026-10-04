@@ -1,0 +1,46 @@
+{
+  "original_research": {
+    "cpu": "Intel Core i7-1355U",
+    "threads": 12,
+    "activities": [
+      "research",
+      "implementation",
+      "optimization",
+      "original finite verification"
+    ],
+    "reported_X": "10000000000000",
+    "pi": "346065536839",
+    "G": 635,
+    "original_run_parameters": {
+      "implementation_stage": "v5",
+      "K": 1024,
+      "B": 8192,
+      "W": "100000000000",
+      "T": 128
+    },
+    "result_basis": "contemporaneous project research notes",
+    "original_1e13_segment_log_included": false
+  },
+  "reproduction_check": {
+    "cpu": "AMD Ryzen 7 5700X",
+    "threads": 16,
+    "implementation": "final released CPU source",
+    "source_md5": "52c92c9f479a09643c43ca5038c4e4ca",
+    "K": 1535,
+    "B": 8192,
+    "W": "100000000000",
+    "T": 128,
+    "pi": "346065536839",
+    "G": 635,
+    "complete_log": "prod/home_1e13.log",
+    "comparison": "recorded prime counts and G values; original reference test transcript",
+    "original_vs_reproduction_segment_log_comparison": false,
+    "independent_full_range_reimplementation": false
+  },
+  "AI_collaboration": {
+    "human_author": "Hirotaka Shimizu",
+    "Claude": "research, implementation, optimization, implementation reviews",
+    "OpenAI_Codex": "subsequent reproduction checks and release preparation",
+    "responsibility": "human author"
+  }
+}

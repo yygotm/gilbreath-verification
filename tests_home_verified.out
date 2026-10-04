@@ -1,0 +1,2 @@
+HOME TESTS VERIFIED: 100 lines match reference, with elapsed seconds and bounded SIGTERM count excluded
+G table, pi counts, SELFCHECK, checkpoint resume/extend, conflict/lock/K guards, split/merge, SIGTERM, records and negative tests reproduced

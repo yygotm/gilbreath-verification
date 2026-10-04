@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software or its execution evidence, please cite this work."
+type: software
+version: "1.0.0"
+license: "MIT"
+repository-code: "https://github.com/yygotm/gilbreath-verification"
+doi: "10.5281/zenodo.23160565"
+title: "A Reproducible CPU Verification of Gilbreath's Conjecture up to 10^13"
+authors:
+  - family-names: "Shimizu"
+    given-names: "Hirotaka"
+abstract: >-
+  A CPU implementation and execution evidence for a finite verification of
+  Gilbreath's conjecture covering prime positions below 10^13, yielding
+  pi(10^13) = 346065536839 and G = 635. Includes source, tests, segment logs,
+  reproduction instructions, and checksums. The result agrees with the
+  established value and does not claim a new numerical record. Research and
+  original computation were performed on Intel hardware; archived full-range
+  logs are from a subsequent AMD reproduction check. The work was carried out
+  by Hirotaka Shimizu with assistance from Claude and OpenAI Codex.
+keywords:
+  - Gilbreath conjecture
+  - computational number theory
+  - reproducibility
+  - prime numbers

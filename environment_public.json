@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-05",
+  "cpu": "AMD Ryzen 7 5700X",
+  "threads": 16,
+  "sieve_kib": 32,
+  "compiler": "GCC 12.2.0",
+  "compiler_target": "znver3",
+  "primesieve": "11.0+ds-2",
+  "K": 1535,
+  "B": 8192,
+  "W": "100000000000",
+  "T": 128,
+  "SELFCHECK": 0,
+  "source_md5": "52c92c9f479a09643c43ca5038c4e4ca",
+  "platform": "Linux container on WSL2, x86-64",
+  "bash_elapsed_seconds": 1135.578,
+  "program_internal_elapsed_seconds": 1135.952,
+  "timing_difference_cause": "not established",
+  "role": "subsequent reproduction check of the final CPU implementation; not the original research environment"
+}
