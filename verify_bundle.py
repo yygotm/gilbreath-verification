@@ -97,7 +97,7 @@ def main():
         checked.add(rel)
         need(hashlib.sha256(path.read_bytes()).hexdigest() == expected, 'Hash differs: ' + rel)
     actual = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file()
-              and p.name != 'SHA256SUMS'}
+              and p.name != 'SHA256SUMS' and '.git' not in p.relative_to(ROOT).parts}
     need(checked == actual, 'Checksum coverage differs')
     need((ROOT / 'tests_home.exit').read_text().strip() == '0', 'Saved test exit differs')
     transcript(ROOT / 'tests_home.out')

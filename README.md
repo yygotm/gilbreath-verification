@@ -24,7 +24,7 @@ python3 verify_bundle.py
 
 This checks the saved evidence without starting a new prime-generation or difference computation. It verifies the accompanying file hashes, test transcript, complete segment coverage, combined row masks, prime counts, G, milestones, and recorded exit statuses.
 
-See [REPRODUCE.md](REPRODUCE.md) for a fresh build, prerequisite tests, and a complete 10^13 rerun in a separate working copy. See [PUBLICATION_DRAFT.md](PUBLICATION_DRAFT.md) for the mathematical definitions, algorithm, prior results, and validation scope.
+See [LARGE_RUNS.md](LARGE_RUNS.md) to run larger ranges (prepared for 10^16; stoppable, resumable, splittable across machines). See [REPRODUCE.md](REPRODUCE.md) for a fresh build, prerequisite tests, and a complete 10^13 rerun in a separate working copy. See [PUBLICATION_DRAFT.md](PUBLICATION_DRAFT.md) for the mathematical definitions, algorithm, prior results, and validation scope.
 
 ## Subsequent reproduction environment
 
